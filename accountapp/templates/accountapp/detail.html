@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="text-center mw-500 m-auto">
+        <div class="m-5">
+            {% if target_user.profile %}
+                <img src ="{{ target_user.profile.image.url }}"
+                     class="profile_image m-4"
+                     alt="profile image"> {# alt 이미지를 안받을 때 대체로 넣는 것 #}
+                <h2 class="NNS_B">{{ target_user.profile.nickname }}</h2>
+                <h5>{{ target_user.profile.message }}</h5>
+            {% else %}
+            <h2 class="NNS_B">
+                <a herf="{% url 'profileapp:create' %}">
+                    Creation Profile
+                </a>
+            </h2>
+            {% endif %}
+        </div>
+        <div>
+            {{ target_user.date_joined }}
+        </div>
+
+        {% if user == target_user %}
+
+        <div>
+            <a href="{% url 'accountapp:update' pk=target_user.pk %}">
+                    Update Info
+            </a>{# 나의정보수정페이지 이기 때문에 user의 plk #}
+        </div>
+        <div>
+            <a href="{% url 'accountapp:delete' pk=target_user.pk %}">
+                Quit
+            </a>{# 나의정보수정페이지 이기 때문에 user의 plk #}
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}
