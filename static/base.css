@@ -32,3 +32,13 @@
 .NNS_B {
     font-family: 'NanumSquareB', cursive;
 }
+
+.round_button{
+    color: black;
+    text-decoration: none;
+    box-shadow: 3px 3px 3px gray;
+    border-radius: 30rem;
+    padding: 0.3rem;
+}
+
+.round_button:hover
